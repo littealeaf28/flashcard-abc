@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './video-reader.css';
 
 export function VideoReader() {
@@ -19,7 +20,13 @@ export function VideoReader() {
 
   const submitVideo = (e: any) => {
     e.preventDefault();
-    console.log('Hello');
+
+    // ${process.env.REACT_APP_PROXY}
+
+    if (video) {
+      axios.post(`${process.env.REACT_APP_PROXY}/video-process`, { video: video })
+      console.log('Only hit if video is not null');
+    }
   }
 
   return (
@@ -28,7 +35,7 @@ export function VideoReader() {
       { video && <div>
         <h3>Video Preview</h3>
         <video controls autoPlay>
-          <source src={video as string} type="video/mp4"/>
+          <source src={ video as string } type="video/mp4"/>
         </video>
       </div> }
       <button type="submit">Convert</button>
