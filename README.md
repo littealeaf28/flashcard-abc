@@ -4,7 +4,7 @@ Our goal is to provide an easy way to learn a new language by creating vocabular
 
 ## Building and installing
 
-Make sure you have installed Node.js (at least version 12) on your computer. Run npm install to build all necessary dependencies.
+Make sure you have installed Node.js (at least version 12) on your computer. Run `npm install` to build all necessary dependencies. Make sure to `cd frontend` and `cd backend` and run `npm install` in both cases.
 
 `git checkout dev` so that you're working on the developer branch 
 
