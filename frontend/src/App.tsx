@@ -6,7 +6,7 @@ import { VideoReader } from './components/video-reader/video-reader';
 export function App() {
   return (
     <div className="App">
-      <Header></Header>
+      <Header/>
       <h1>Video-2-Vocab</h1>
       <VideoReader />
     </div>
