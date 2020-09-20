@@ -44,7 +44,7 @@ export function VideoReader() {
           <source src={ video as string } type="video/mp4"/>
         </video>
       </div> }
-      <button type="submit"><Link to="/flash">Translate</Link></button>
+      <button type="submit">Translate</button>
     </form>
   )
 }

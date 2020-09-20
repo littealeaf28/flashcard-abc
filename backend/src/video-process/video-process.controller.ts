@@ -2,37 +2,39 @@ import { Body, Controller, HttpException, Post } from '@nestjs/common'
 import { VideoPayloadDto } from './video-payload.dto'
 import { writeFile } from 'fs';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const ffmpeg = require('ffmpeg');
+const pathToFfmpeg = require('ffmpeg-static');
+import * as Ffmpeg from 'fluent-ffmpeg'
 
 @Controller('video-process')
 export class VideoProcessController {
   @Post()
   processVideo(@Body() videoPayloadDto: VideoPayloadDto): string {
-    writeFile(`./tmp/${videoPayloadDto.name}.mp4`, videoPayloadDto.videoURL, { encoding: 'base64' }, (err) => {
+    writeFile(`./tmp/${videoPayloadDto.name}.mp4`, videoPayloadDto.videoURL, { encoding: 'base64' }, async (err) => {
       if (err) {
         return new HttpException('Video cannot be processed', 406);
       }
-
       console.log('Finished writing video');
 
       try {
-        new ffmpeg(`./tmp/${videoPayloadDto.name}.mp4`)
-          .then((video) => {
-            console.log('Finished processing video')
-            video.fnExtractSoundToMP3(`./tmp/${videoPayloadDto.name}.mp3`, (err, file) => {
-              if (err) {
-                console.log(err);
-              }
-              console.log('Finished extracting audio from video');
+        await new Promise((resolve, reject) => {
+          Ffmpeg(`./tmp/${videoPayloadDto.name}.mp4`)
+            .setFfmpegPath(pathToFfmpeg)
+            .noVideo()
+            .on('start', () => {
+              console.log('Starts processing videos');
             })
-          })
-          .catch((err) => {
-            console.log(err);
-            return;
-          })
+            .on('error', (err, stdout, stderr) => {
+              // console.log(err, stdout, stderr);
+              reject(err);
+            })
+            .on('end', (stdout, stderr) => {
+              // console.log(stdout, stderr);
+              resolve(true)
+            })
+            .saveToFile(`./tmp/${videoPayloadDto.name}.mp3`);
+        })
       } catch (err) {
-        console.log(err);
-        return new HttpException(err.msg, err.code)
+        return new HttpException('Internal server error', 500);
       }
     })
     return 'Success';
