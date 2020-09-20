@@ -6,6 +6,9 @@ const pathToFfmpeg = require('ffmpeg-static');
 import * as Ffmpeg from 'fluent-ffmpeg';
 import { Storage } from '@google-cloud/storage'
 
+const storage = new Storage();
+const bucket = storage.bucket('flashcard-abc-audio');
+
 @Controller('video-process')
 export class VideoProcessController {
   @Post()
@@ -39,8 +42,20 @@ export class VideoProcessController {
         return new HttpException('Internal server error', 500);
       }
 
-      // const storage = new Storage();
-      // const bucket = storage.bucket('flashcard-abc-audio')
+      try {
+        await new Promise((resolve, reject) => {
+          bucket.file(`./tmp/${videoPayloadDto.name}.mp3`)
+            .createWriteStream({ resumable: false })
+            .on('error', (err) => {
+              reject(err);
+            })
+            .on('finish', () => {
+              resolve(true);
+            })
+        })
+      } catch (err) {
+        return new HttpException('Internal server error', 500);
+      }
     })
     return 'Success';
   }

@@ -8,10 +8,9 @@
     "build:frontend": "cd frontend && npm install && npm run build",
     "build:backend": "cd backend && npm install && npm run build",
     "gcp-build": "npm install && concurrently \"npm run build:frontend\" \"npm run build:backend\"",
-    "start": "export PORT=8080&& set REACT_APP_PROXY=http://localhost:8080&& npm install && concurrently \"cd frontend && npm run start\" \"cd backend && npm run start\""
+    "start": "export PORT=8080&& set REACT_APP_PROXY=http://localhost:8080&& concurrently \"cd frontend && npm run start\" \"cd backend && npm run start\""
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^5.3.0"
   }
 }
