@@ -26,10 +26,15 @@
 }
 .card h2{
   position: relative;
-  margin-top: 5px;
+  margin: 0px;
   font-size: 40px;
 }
+.card p {
+  font-size: 20px;
+  margin: 5px 0px;
+}
 #next, #prev {
+  margin-top: 0;
   font-size: 20px;
   background-color: transparent;
   color: #ffffff;

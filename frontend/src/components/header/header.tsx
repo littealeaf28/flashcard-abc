@@ -9,7 +9,7 @@ class Header extends Component {
       <div className="container">
         <img src={Logo} />
         <div className="logo-text">
-          <h1>Video-2-Vocab</h1>
+          <h1>Video-<span id="logo-2">2</span>-Vocab</h1>
           <p>V²</p>
         </div>
       </div>
