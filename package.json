@@ -6,7 +6,9 @@
     "start:backend": "cd backend && npm run start",
     "start:dev": "set REACT_APP_PROXY=http://localhost:3001&& concurrently \"npm run start:backend\" \"npm run start:frontend\""
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-router-dom": "^5.2.0"
+  },
   "devDependencies": {
     "concurrently": "^5.3.0"
   }
