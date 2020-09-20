@@ -4,7 +4,7 @@ import { writeFile } from 'fs';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pathToFfmpeg = require('ffmpeg-static');
 import * as Ffmpeg from 'fluent-ffmpeg';
-import { join } from 'path';
+import { Storage } from '@google-cloud/storage'
 
 @Controller('video-process')
 export class VideoProcessController {
@@ -38,6 +38,9 @@ export class VideoProcessController {
       } catch (err) {
         return new HttpException('Internal server error', 500);
       }
+
+      // const storage = new Storage();
+      // const bucket = storage.bucket('flashcard-abc-audio')
     })
     return 'Success';
   }

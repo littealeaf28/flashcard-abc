@@ -5,11 +5,10 @@
     "start:frontend-dev": "cd frontend && npm run start",
     "start:backend-dev": "cd backend && npm run start:dev",
     "start:dev": "set REACT_APP_PROXY=http://localhost:3001&& concurrently \"npm run start:backend-dev\" \"npm run start:frontend-dev\"",
-    "start:frontend": "cd frontend && npm run start",
-    "start:backend": "cd backend && npm run start",
-    "start": "export PORT=8080&& set REACT_APP_PROXY=http://localhost:8080&& npm install && concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "pregcp-build": "npm install",
-    "gcp-build": "concurrently \"cd frontend && npm install && npm run build\" \"cd backend && npm install && npm run build\""
+    "build:frontend": "cd frontend && npm install && npm run build",
+    "build:backend": "cd backend && npm install && npm run build",
+    "gcp-build": "npm install && concurrently \"npm run build:frontend\" \"npm run build:backend\"",
+    "start": "export PORT=8080&& set REACT_APP_PROXY=http://localhost:8080&& npm install && concurrently \"cd frontend && npm run start\" \"cd backend && npm run start\""
   },
   "dependencies": {},
   "devDependencies": {
