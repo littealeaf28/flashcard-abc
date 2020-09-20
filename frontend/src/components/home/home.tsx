@@ -7,7 +7,7 @@ class Home extends Component {
       <div className="welcome-note">
 
         <p>
-          V², learn a new language from the content you choose!
+          <span id="name">V²</span>, learn a new language from the content you choose!
           It is as easy as 1.Insert an MP4 file you wish to be translated
           to English 2. Receive flashcards with translated words grouped by order of difficulty.
         </p>

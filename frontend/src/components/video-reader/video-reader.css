@@ -8,3 +8,10 @@ form {
     position: relative;
     top: 15%;
 }
+.translate-btn {
+    background-color: #F7B733;
+  border: none;
+  padding: 10px;
+	border-width: 2px 2px 2px 2px;
+  border-radius: 20px 20px 20px 20px;
+}

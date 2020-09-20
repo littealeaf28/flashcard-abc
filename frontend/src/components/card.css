@@ -1,0 +1,36 @@
+#flash{
+  background-color:#33CCCC;
+  border-radius: 20px;
+  border: none;
+  position: fixed;
+  width: 500px;
+  height: 250px;
+  top: 30%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -250px;
+  text-align: center;
+  z-index: 10000;
+}
+
+#close{
+  position: relative;
+  left: 45%;
+  margin-top: 5px;
+  background-color: transparent;
+  border: none;
+}
+.card{
+  color: #0D1627;
+
+}
+.card h2{
+  position: relative;
+  margin-top: 5px;
+  font-size: 40px;
+}
+#next, #prev {
+  font-size: 20px;
+  background-color: transparent;
+  color: #ffffff;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './card';
+import './card.css'
 
 class Flash extends Component<any, any> {
 

@@ -46,7 +46,7 @@ export function VideoReader(props: any){
           <source src={ video as string } type="video/mp4"/>
         </video>
       </div> }
-      <button type="submit" onClick={translate}>Translate</button>
+      <button type="submit" onClick={translate} className="translate-btn">Translate</button>
     </form>
   )
 }
