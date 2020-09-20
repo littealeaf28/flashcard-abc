@@ -7,8 +7,9 @@ class Home extends Component {
       <div className="welcome-note">
 
         <p>
-          V² is committed to make learning a new language easy and fun for you. It is as easy as 1.Insert an MP4 file you wish to be translated
-          to English 2. Recieve flashcards with translated words grouped by order of difficulty.
+          V², learn a new language from the content you choose!
+          It is as easy as 1.Insert an MP4 file you wish to be translated
+          to English 2. Receive flashcards with translated words grouped by order of difficulty.
         </p>
 
         <p>

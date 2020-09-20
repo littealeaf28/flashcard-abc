@@ -3,7 +3,8 @@ import { VideoPayloadDto } from './video-payload.dto'
 import { writeFile } from 'fs';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pathToFfmpeg = require('ffmpeg-static');
-import * as Ffmpeg from 'fluent-ffmpeg'
+import * as Ffmpeg from 'fluent-ffmpeg';
+import { join } from 'path';
 
 @Controller('video-process')
 export class VideoProcessController {
@@ -21,7 +22,7 @@ export class VideoProcessController {
             .setFfmpegPath(pathToFfmpeg)
             .noVideo()
             .on('start', () => {
-              console.log('Starts processing videos');
+              console.log('Starts processing video');
             })
             .on('error', (err, stdout, stderr) => {
               // console.log(err, stdout, stderr);
@@ -29,6 +30,7 @@ export class VideoProcessController {
             })
             .on('end', (stdout, stderr) => {
               // console.log(stdout, stderr);
+              console.log('Completes processing video')
               resolve(true)
             })
             .saveToFile(`./tmp/${videoPayloadDto.name}.mp3`);
