@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40% 75%;
+}
+.logo-text {
+  position: relative;
+  width: 25%;
+}
+.container p {
+  color: #33CCCC;
+  font-size: 40px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}

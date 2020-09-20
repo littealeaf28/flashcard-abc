@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './video-reader.css';
+import Flush from '../flash';
+import {Link} from 'react-router-dom';
 
 export function VideoReader() {
   const [video, setVideo] = useState<string | ArrayBuffer | null>(null);
@@ -42,7 +44,7 @@ export function VideoReader() {
           <source src={ video as string } type="video/mp4"/>
         </video>
       </div> }
-      <button type="submit">Convert</button>
+      <button type="submit"><Link to="/flash">Translate</Link></button>
     </form>
   )
 }
