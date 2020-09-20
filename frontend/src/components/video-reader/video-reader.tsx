@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './video-reader.css';
-import Flush from '../flash';
-import {Link} from 'react-router-dom';
 
-export function VideoReader() {
+export function VideoReader(props: any){
   const [video, setVideo] = useState<string | ArrayBuffer | null>(null);
   const [videoFile, setVideoFile] = useState<File | null>(null);
 
@@ -35,6 +33,10 @@ export function VideoReader() {
     }
   }
 
+  const translate = () => {
+    if (video) props.translate([["hello", 1, "hola", 3], ["apple", 3, "ringo", 2], ["hi", 2, "hollla", 5]])
+  }
+
   return (
     <form onSubmit={submitVideo}>
       <input type="file" accept="video/*" onChange={getVideo} required/>
@@ -44,7 +46,7 @@ export function VideoReader() {
           <source src={ video as string } type="video/mp4"/>
         </video>
       </div> }
-      <button type="submit">Translate</button>
+      <button type="submit" onClick={translate}>Translate</button>
     </form>
   )
 }
