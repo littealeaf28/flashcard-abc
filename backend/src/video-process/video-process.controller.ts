@@ -40,7 +40,7 @@ export class VideoProcessController {
       }
 
       // const storage = new Storage();
-      // const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET)
+      // const bucket = storage.bucket('flashcard-abc-audio')
     })
     return 'Success';
   }
