@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start:frontend": "cd frontend && npm run start",
-    "start:backend": "cd backend && npm run start",
-    "start:dev": "set REACT_APP_PROXY=http://localhost:3001&& concurrently \"npm run start:backend\" \"npm run start:frontend\""
+    "start:backend-dev": "cd backend && npm run start:dev",
+    "start:dev": "set REACT_APP_PROXY=http://localhost:3001&& concurrently \"npm run start:backend-dev\" \"npm run start:frontend\""
   },
   "dependencies": {},
   "devDependencies": {

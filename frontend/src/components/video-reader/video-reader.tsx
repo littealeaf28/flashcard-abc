@@ -4,13 +4,16 @@ import './video-reader.css';
 
 export function VideoReader() {
   const [video, setVideo] = useState<string | ArrayBuffer | null>(null);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
 
   const getVideo = (e: any) => {
     const reader = new FileReader();
     const videoFile: File = e.target.files[0];
 
+    // In the case, user is switching out video
     if (videoFile) {
       reader.readAsDataURL(videoFile);
+      setVideoFile(videoFile);
     }
 
     reader.addEventListener('load', () => {
@@ -21,11 +24,12 @@ export function VideoReader() {
   const submitVideo = (e: any) => {
     e.preventDefault();
 
-    // ${process.env.REACT_APP_PROXY}
-
-    if (video) {
-      axios.post(`${process.env.REACT_APP_PROXY}/video-process`, { video: video })
-      console.log('Only hit if video is not null');
+    if (video && videoFile) {
+      let videoURL = video as string;
+      videoURL = videoURL.replace(/^data:(.*?);base64,/, '');
+      const videoFileName = videoFile.name.replace(/\s/g, '-')
+        .substr(0, videoFile.name.length - 4);
+      axios.post(`${process.env.REACT_APP_PROXY}/video-process`, { name: videoFileName, videoURL })
     }
   }
 
