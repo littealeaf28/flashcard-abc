@@ -1,4 +1,2 @@
 runtime: nodejs12 # or nodejs10
-
 instance_class: B2
-
