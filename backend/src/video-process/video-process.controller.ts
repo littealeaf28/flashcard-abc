@@ -39,8 +39,8 @@ export class VideoProcessController {
         return new HttpException('Internal server error', 500);
       }
 
-      const storage = new Storage();
-      const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET)
+      // const storage = new Storage();
+      // const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET)
     })
     return 'Success';
   }
