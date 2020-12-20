@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36% 75%;
+}
+.logo-text {
+  position: relative;
+  width: 35%;
+  font-size: 25px;
+  letter-spacing: 2px;
+  margin-top: 0;
+
+}
+.container p {
+  color: #33CCCC;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+#logo-2 {
+  color: #F7B733;
+}
+
+.container img {
+  width: 100px;
+  border-radius: 50%;
+  margin: 10px;
+}

@@ -2,12 +2,15 @@
   "name": "flashcard-abc",
   "version": "1.0.0",
   "scripts": {
-    "start:frontend": "cd frontend && npm run start",
-    "start:backend": "cd backend && npm run start",
-    "start:dev": "set REACT_APP_PROXY=http://localhost:3001&& concurrently \"npm run start:backend\" \"npm run start:frontend\""
+    "start:frontend-dev": "cd frontend && npm run start",
+    "start:backend-dev": "cd backend && npm run start:dev",
+    "start:dev": "set REACT_APP_PROXY=http://localhost:3001&& concurrently \"npm run start:backend-dev\" \"npm run start:frontend-dev\"",
+    "build:frontend": "cd frontend && npm install && npm run build",
+    "build:backend": "cd backend && npm install && npm run build",
+    "gcp-build": "npm install && concurrently \"npm run build:frontend\" \"npm run build:backend\"",
+    "start": "export PORT=8080&& set REACT_APP_PROXY=http://localhost:8080&& cd backend && npm run start"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^5.3.0"
   }
 }

@@ -1,5 +1,8 @@
 # dependencies
 /node_modules
+__pycache__/
 
 # IDEs and editors
 /.idea
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
