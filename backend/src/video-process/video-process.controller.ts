@@ -5,7 +5,6 @@ import * as Ffmpeg from 'fluent-ffmpeg';
 import { Storage } from '@google-cloud/storage'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pathToFfmpeg = require('ffmpeg-static');
-// import { speech } from '@google-cloud__text-to-speech'
 
 const storage = new Storage();
 const bucket = storage.bucket('flashcard-abc-audio');
