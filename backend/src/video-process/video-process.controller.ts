@@ -1,10 +1,11 @@
 import { Body, Controller, HttpException, Post } from '@nestjs/common'
 import { VideoPayloadDto } from './video-payload.dto'
 import { writeFile } from 'fs';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const pathToFfmpeg = require('ffmpeg-static');
 import * as Ffmpeg from 'fluent-ffmpeg';
 import { Storage } from '@google-cloud/storage'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pathToFfmpeg = require('ffmpeg-static');
+// import { speech } from '@google-cloud__text-to-speech'
 
 const storage = new Storage();
 const bucket = storage.bucket('flashcard-abc-audio');
@@ -53,6 +54,13 @@ export class VideoProcessController {
               resolve(true);
             })
         })
+      } catch (err) {
+        return new HttpException('Internal server error', 500);
+      }
+
+      try {
+        // const client = new speech.SpeechClient();
+
       } catch (err) {
         return new HttpException('Internal server error', 500);
       }
